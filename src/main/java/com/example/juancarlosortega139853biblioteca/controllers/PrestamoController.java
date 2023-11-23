@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/prestamos")
 public class PrestamoController {
@@ -13,11 +15,31 @@ public class PrestamoController {
     @Autowired
     private PrestamoService prestamoService;
 
-    @PostMapping
-    public ResponseEntity<Prestamo> realizarPrestamo(@RequestBody Prestamo prestamo) {
-        Prestamo nuevoPrestamo = prestamoService.realizarPrestamo(prestamo);
-        return ResponseEntity.ok(nuevoPrestamo);
+    @GetMapping
+    public List<Prestamo> getAllPrestamos() {
+        return prestamoService.findAll();
     }
 
-    // Más métodos para manejar otras peticiones HTTP como GET, PUT, DELETE
+    @GetMapping("/{id}")
+    public ResponseEntity<Prestamo> getPrestamo(@PathVariable Long id) {
+        return prestamoService.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping
+    public Prestamo createPrestamo(@RequestBody Prestamo prestamo) {
+        return prestamoService.save(prestamo);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Prestamo> updatePrestamo(@PathVariable Long id, @RequestBody Prestamo prestamo) {
+        return ResponseEntity.ok(prestamoService.update(id, prestamo));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePrestamo(@PathVariable Long id) {
+        prestamoService.delete(id);
+        return ResponseEntity.ok().build();
+    }
 }

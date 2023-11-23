@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/libros")
 public class LibroController {
@@ -16,10 +15,30 @@ public class LibroController {
     private LibroService libroService;
 
     @GetMapping
-    public ResponseEntity<List<Libro>> listarLibros() {
-        List<Libro> libros = libroService.listarTodosLosLibros();
-        return ResponseEntity.ok(libros);
+    public List<Libro> getAllLibros() {
+        return libroService.findAll();
     }
 
-    // Más métodos para manejar otras peticiones HTTP como POST, PUT, DELETE
+    @GetMapping("/{id}")
+    public ResponseEntity<Libro> getLibro(@PathVariable Long id) {
+        return libroService.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping
+    public Libro createLibro(@RequestBody Libro libro) {
+        return libroService.save(libro);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Libro> updateLibro(@PathVariable Long id, @RequestBody Libro libro) {
+        return ResponseEntity.ok(libroService.update(id, libro));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteLibro(@PathVariable Long id) {
+        libroService.delete(id);
+        return ResponseEntity.ok().build();
+    }
 }

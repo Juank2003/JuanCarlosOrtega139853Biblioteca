@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LectorRepository extends JpaRepository<Lector, Long> {
-    // Aquí puedes agregar métodos de consulta personalizados si es necesario
+    // Aquí puedes añadir métodos de consulta personalizados si es necesario
 }
+
