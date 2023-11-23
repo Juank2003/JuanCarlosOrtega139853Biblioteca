@@ -8,27 +8,17 @@ import java.time.LocalDate;
 @Table(name = "prestamos")
 public class Prestamo {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @jakarta.persistence.Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "lector_id", nullable = false)
     private Lector lector;
 
     @ManyToOne
-    @JoinColumn(name = "libro_id", nullable = false)
     private Libro libro;
 
-    @Column(nullable = false)
     private LocalDate fechaPrestamo;
-
-    public Prestamo(Long id, Lector lector, Libro libro, LocalDate fechaPrestamo) {
-        this.id = id;
-        this.lector = lector;
-        this.libro = libro;
-        this.fechaPrestamo = fechaPrestamo;
-    }
 
     public Prestamo() {
 
@@ -66,6 +56,12 @@ public class Prestamo {
         this.fechaPrestamo = fechaPrestamo;
     }
 
-    // Otros atributos y anotaciones
-    // Getters y setters
+    public Prestamo(Long id, Lector lector, Libro libro, LocalDate fechaPrestamo) {
+        this.id = id;
+        this.lector = lector;
+        this.libro = libro;
+        this.fechaPrestamo = fechaPrestamo;
+    }
+
+    // Constructores, getters y setters
 }

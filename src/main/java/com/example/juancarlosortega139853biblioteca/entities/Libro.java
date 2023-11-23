@@ -2,20 +2,25 @@ package com.example.juancarlosortega139853biblioteca.entities;
 
 import jakarta.persistence.*;
 
+
 @Entity
 @Table(name = "libros")
 public class Libro {
 
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @jakarta.persistence.Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false)
     private String titulo;
-
-    @Column(nullable = false)
     private String autor;
+
+    // Constructores, getters y setters
+
+    public Libro(Long id, String titulo, String autor) {
+        this.id = id;
+        this.titulo = titulo;
+        this.autor = autor;
+    }
 
     public Libro() {
 
@@ -44,13 +49,4 @@ public class Libro {
     public void setAutor(String autor) {
         this.autor = autor;
     }
-
-    public Libro(Long id, String titulo, String autor) {
-        this.id = id;
-        this.titulo = titulo;
-        this.autor = autor;
-    }
-
-    // Otros atributos y anotaciones
-    // Getters y setters
 }

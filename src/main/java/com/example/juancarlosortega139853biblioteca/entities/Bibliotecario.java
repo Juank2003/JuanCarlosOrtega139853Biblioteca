@@ -1,10 +1,11 @@
 package com.example.juancarlosortega139853biblioteca.entities;
 
+//bibliotecario debe un controlador
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "lectores")
-public class Lector {
+@Table(name = "bibliotecarios")
+public class Bibliotecario {
 
     @jakarta.persistence.Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,12 +15,12 @@ public class Lector {
 
     // Constructores, getters y setters
 
-    public Lector(Long id, String nombre) {
+    public Bibliotecario(Long id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
 
-    public Lector() {
+    public Bibliotecario() {
 
     }
 
