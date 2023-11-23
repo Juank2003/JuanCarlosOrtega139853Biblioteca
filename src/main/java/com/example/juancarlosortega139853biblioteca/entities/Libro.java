@@ -15,13 +15,6 @@ public class Libro {
     private String autor;
 
     // Constructores, getters y setters
-
-    public Libro(Long id, String titulo, String autor) {
-        this.id = id;
-        this.titulo = titulo;
-        this.autor = autor;
-    }
-
     public Libro() {
 
     }

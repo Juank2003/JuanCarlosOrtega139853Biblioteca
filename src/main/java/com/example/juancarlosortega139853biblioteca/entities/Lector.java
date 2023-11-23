@@ -13,12 +13,6 @@ public class Lector {
     private String nombre;
 
     // Constructores, getters y setters
-
-    public Lector(Long id, String nombre) {
-        this.id = id;
-        this.nombre = nombre;
-    }
-
     public Lector() {
 
     }

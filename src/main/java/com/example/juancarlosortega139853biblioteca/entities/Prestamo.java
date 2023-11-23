@@ -20,6 +20,7 @@ public class Prestamo {
 
     private LocalDate fechaPrestamo;
 
+    // Constructores, getters y setters
     public Prestamo() {
 
     }
@@ -55,13 +56,4 @@ public class Prestamo {
     public void setFechaPrestamo(LocalDate fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
     }
-
-    public Prestamo(Long id, Lector lector, Libro libro, LocalDate fechaPrestamo) {
-        this.id = id;
-        this.lector = lector;
-        this.libro = libro;
-        this.fechaPrestamo = fechaPrestamo;
-    }
-
-    // Constructores, getters y setters
 }
